@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Golden Bean Café</title>
+  <meta name="description" content="Contact Golden Bean Café in Melville, Johannesburg. Get in touch with our team or send us your feedback." />
+  <meta name="keywords" content="Golden Bean Café contact, Melville café, coffee shop location, send message" />
+  <meta name="author" content="Gudani Nevhufumba" />
+
+  <!-- Fonts & CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Golden Bean Café</h1>
+    <p>Artisan Coffee. Cozy Atmosphere. Local Vibes.</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="events.html">Events</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main>
+    <section id="contact" class="fade-in">
+      <h2>Contact Us</h2>
+      <p>📍 42 7th Street, Melville, Johannesburg<br>
+         📞 068 212 8287<br>
+         📧 hello@goldenbeancafe.co.za</p>
+
+      <h3>Send us a message</h3>
+      <form id="contact-form" novalidate>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+        <span class="error-message" id="name-error"></span>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+        <span class="error-message" id="email-error"></span>
+
+        <label for="type">Message Type:</label>
+        <select id="type" name="type" required>
+          <option value="">Select</option>
+          <option value="general">General Enquiry</option>
+          <option value="feedback">Feedback</option>
+          <option value="booking">Booking</option>
+        </select>
+        <span class="error-message" id="type-error"></span>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <span class="error-message" id="message-error"></span>
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <p id="form-response" class="success-message"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Golden Bean Café | Designed by Gudani Nevhufumba</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+</html>

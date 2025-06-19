@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Menu | Golden Bean Café</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- Lightbox CSS -->
+  <style>
+    /* Lightbox overlay */
+    #lightboxOverlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    #lightboxOverlay img {
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #000;
+    }
+    #lightboxOverlay:target {
+      display: flex;
+    }
+    #lightboxOverlay .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Golden Bean Café</h1>
+    <p>Artisan Coffee. Cozy Atmosphere. Local Vibes.</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="menu.html" aria-current="page">Menu</a>
+    <a href="events.html">Events</a>
+    <a href="contact.html">Contact</a>
+    <a href="enquiry.html">Enquiry</a>
+  </nav>
+
+  <main>
+    <section id="menu" class="fade-in">
+      <h2>Our Menu</h2>
+
+      <!-- Search Input -->
+      <input type="text" id="menuSearch" placeholder="Search menu items..." style="width: 100%; max-width: 400px; padding: 0.5rem; margin-bottom: 1.5rem; font-size: 1rem;" />
+
+      <div class="menu-grid" id="menuGrid">
+
+        <!-- Menu Item 1 -->
+        <div class="menu-item">
+          <a href="#img1"><img src="images/flat-white.jpg" alt="Flat White Coffee" /></a>
+          <h3>Flat White</h3>
+          <button class="accordion-btn">Description</button>
+          <div class="accordion-content">
+            <p>Silky espresso with steamed milk. <strong>R32</strong></p>
+          </div>
+        </div>
+
+        <!-- Menu Item 2 -->
+        <div class="menu-item">
+          <a href="#img2"><img src="images/americano.jpg" alt="Americano" /></a>
+          <h3>Americano</h3>
+          <button class="accordion-btn">Description</button>
+          <div class="accordion-content">
+            <p>Rich espresso diluted with hot water. <strong>R28</strong></p>
+          </div>
+        </div>
+
+        <!-- Menu Item 3 -->
+        <div class="menu-item">
+          <a href="#img3"><img src="images/carrot-cake.jpg" alt="Carrot Cake Slice" /></a>
+          <h3>Carrot Cake</h3>
+          <button class="accordion-btn">Description</button>
+          <div class="accordion-content">
+            <p>Spiced, moist, with cream cheese frosting. <strong>R40</strong></p>
+          </div>
+        </div>
+
+        <!-- Menu Item 4 -->
+        <div class="menu-item">
+          <a href="#img4"><img src="images/croissant.jpg" alt="Chocolate Croissant" /></a>
+          <h3>Chocolate Croissant</h3>
+          <button class="accordion-btn">Description</button>
+          <div class="accordion-content">
+            <p>Flaky pastry with dark chocolate. <strong>R35</strong></p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Golden Bean Café | Designed by Gudani Nevhufumba</p>
+  </footer>
+
+  <!-- Lightbox overlays -->
+  <div id="lightboxOverlay" aria-hidden="true">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <img id="lightboxImg" src="" alt="Enlarged Menu Item" />
+  </div>
+
+  <script>
+    // Accordion logic
+    document.querySelectorAll('.accordion-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const content = btn.nextElementSibling;
+        const isOpen = content.style.maxHeight;
+        // Close all accordions
+        document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = null);
+        if (!isOpen) {
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    });
+
+    // Search filter
+    const searchInput = document.getElementById('menuSearch');
+    searchInput.addEventListener('input', () => {
+      const filter = searchInput.value.toLowerCase();
+      document.querySelectorAll('.menu-item').forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(filter) ? '' : 'none';
+      });
+    });
+
+    // Lightbox open
+    document.querySelectorAll('.menu-item a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const imgSrc = link.querySelector('img').src;
+        const lightboxImg = document.getElementById('lightboxImg');
+        lightboxImg.src = imgSrc;
+        document.getElementById('lightboxOverlay').style.display = 'flex';
+        document.getElementById('lightboxOverlay').setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    // Lightbox close
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightboxOverlay');
+      lightbox.style.display = 'none';
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.getElementById('lightboxImg').src = '';
+    }
+
+    // Close lightbox on outside click
+    document.getElementById('lightboxOverlay').addEventListener('click', e => {
+      if (e.target.id === 'lightboxOverlay') closeLightbox();
+    });
+
+    // Animation on scroll (fade-in)
+    const faders = document.querySelectorAll('.menu-item');
+    const appearOptions = { threshold: 0.2 };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('fade-in-active');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      fader.classList.add('fade-in'); // initial hidden state
+      appearOnScroll.observe(fader);
+    });
+  </script>
+
+  <style>
+    /* Accordion styles */
+    .accordion-btn {
+      background-color: #4b2e2e;
+      color: white;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      margin: 0.5rem 0;
+      width: 100%;
+      text-align: left;
+      outline: none;
+      transition: background-color 0.3s ease;
+    }
+    .accordion-btn:hover {
+      background-color: #6a3f3f;
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+      background-color: #f7f2ec;
+      padding: 0 1rem;
+      border-radius: 0 0 12px 12px;
+      font-size: 0.95rem;
+    }
+
+    /* Fade in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in-active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</body>
+</html>

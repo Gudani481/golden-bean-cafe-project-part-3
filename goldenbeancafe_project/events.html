@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events | Golden Bean Café</title>
+  <meta name="description" content="Check out the latest events and specials at Golden Bean Café – live music, workshops, art nights and more." />
+  <meta name="keywords" content="Golden Bean Café events, live music, coffee tasting, art night" />
+  <meta name="author" content="Gudani Nevhufumba" />
+
+  <!-- Fonts & CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Golden Bean Café</h1>
+    <p>Artisan Coffee. Cozy Atmosphere. Local Vibes.</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="events.html">Events</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main>
+    <section id="events" class="fade-in">
+      <h2>Events & Specials</h2>
+      <div class="event-list">
+        <div class="event-card" onclick="openEventModal('Live Music Fridays', 'Enjoy soulful acoustic sets every Friday evening from 6pm to 9pm. Featuring different local artists weekly.')">
+          <h3>🎶 Live Music Fridays</h3>
+          <p>Every Friday • 6PM – 9PM</p>
+        </div>
+        <div class="event-card" onclick="openEventModal('Coffee Tasting Workshops', 'Join our expert baristas on the last Saturday of each month for a hands-on tasting experience. Bookings required.')">
+          <h3>☕ Coffee Tasting Workshops</h3>
+          <p>Last Saturday of the month • 3PM – 5PM</p>
+        </div>
+        <div class="event-card" onclick="openEventModal('Poetry & Open Mic Night', 'Share your voice or enjoy an evening of poetry, spoken word, and storytelling at our open mic night.')">
+          <h3>🎤 Poetry & Open Mic Night</h3>
+          <p>2nd Thursday Monthly • 7PM – 9PM</p>
+        </div>
+        <div class="event-card" onclick="openEventModal('Local Art Showcase', 'Support local creatives! Each month we feature a new artist’s work displayed in the café.')">
+          <h3>🖼️ Local Art Showcase</h3>
+          <p>All Month Long</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Golden Bean Café | Designed by Gudani Nevhufumba</p>
+  </footer>
+
+  <!-- Modal -->
+  <div id="eventModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeEventModal()">&times;</span>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDe

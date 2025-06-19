@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Golden Bean Café - Artisan Coffee & Local Vibes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap" rel="stylesheet" />
+  <style>
+    /* Basic Reset and Fonts */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Open Sans', sans-serif;
+      background-color: #fdfbf7;
+      color: #4b2e2e;
+      overflow-x: hidden;
+    }
+    a {
+      color: #b36b00;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #e4a11b;
+    }
+    header {
+      background-color: #4b2e2e;
+      color: #fff;
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      font-family: 'Playfair Display', serif;
+    }
+    header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 0.3rem;
+      letter-spacing: 2px;
+    }
+    header p {
+      font-size: 1.3rem;
+      font-style: italic;
+      margin: 0;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #372020;
+      gap: 2rem;
+      padding: 1rem 0;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    nav a {
+      color: #fff;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+    }
+    nav a:hover {
+      background-color: #b36b00;
+      color: #fff;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1rem 5rem;
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .hero-text {
+      flex: 1 1 300px;
+      max-width: 480px;
+    }
+    .hero-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #4b2e2e;
+    }
+    .hero-text p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      color: #5a443d;
+    }
+
+    /* Newsletter form */
+    #newsletter-form {
+      display: flex;
+      gap: 0.7rem;
+    }
+    #newsletter-form input[type="email"] {
+      flex-grow: 1;
+      padding: 0.7rem 1rem;
+      font-size: 1rem;
+      border: 2px solid #b36b00;
+      border-radius: 4px;
+      outline-offset: 2px;
+      transition: border-color 0.3s ease;
+    }
+    #newsletter-form input[type="email"]:focus {
+      border-color: #e4a11b;
+    }
+    #newsletter-form button {
+      padding: 0.7rem 1.5rem;
+      background-color: #b36b00;
+      color: white;
+      font-weight: 700;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #newsletter-form button:hover {
+      background-color: #e4a11b;
+    }
+    #newsletter-response {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      color: green;
+      min-height: 1.2em;
+    }
+
+    /* Hero image with cat and mug */
+    .hero-image {
+      position: relative;
+      flex: 1 1 280px;
+      max-width: 320px;
+      height: 320px;
+    }
+    /* Coffee mug SVG */
+    .coffee-mug-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(2px 4px 3px rgba(0,0,0,0.15));
+      animation: mug-bounce 2s ease-in-out infinite alternate;
+    }
+    @keyframes mug-bounce {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+
+    /* Cat SVG peek animation */
+    .cat-svg {
+      position: absolute;
+      bottom: 20px;
+      left: 30px;
+      width: 120px;
+      height: auto;
+      transform-origin: bottom center;
+      animation: cat-peek 4s ease-in-out infinite alternate;
+      filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.2));
+      cursor: pointer;
+    }
+    @keyframes cat-peek {
+      0% { transform: translateX(-60px) scale(0.85); opacity: 0; }
+      50% { transform: translateX(0) scale(1); opacity: 1; }
+      100% { transform: translateX(-60px) scale(0.85); opacity: 0; }
+    }
+
+    /* Info section below hero */
+    .info-section {
+      max-width: 700px;
+      margin: 0 auto 4rem;
+      padding: 0 1rem;
+      text-align: center;
+      color: #5a443d;
+    }
+    .info-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #4b2e2e;
+    }
+    .info-section p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      margin-bottom: 0.5rem;
+    }
+    .info-section address {
+      font-style: normal;
+      margin-top: 1rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    /* Coffee beans game */
+    #coffee-game {
+      max-width: 500px;
+      margin: 0 auto 3rem;
+      text-align: center;
+      user-select: none;
+    }
+    #game-area {
+      position: relative;
+      border: 2px solid #b36b00;
+      height: 250px;
+      border-radius: 12px;
+      background: #fff8f0;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+    .bean {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-image: url('https://i.imgur.com/FNwtzow.png'); /* cute coffee bean emoji or replace with real */
+      background-size: cover;
+      cursor: pointer;
+      animation: fall 4s linear forwards;
+      user-select: none;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-40px) rotate(0deg); opacity: 1;}
+      100% { transform: translateY(250px) rotate(360deg); opacity: 0;}
+    }
+    #scoreboard {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: #4b2e2e;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #4b2e2e;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    /* Responsive */
+    @media (max-width: 720px) {
+      .hero {
+        flex-direction: column;
+      }
+      .hero-image {
+        max-width: 260px;
+        height: 260px;
+      }
+      .hero-text {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Golden Bean Café</h1>
+    <p>Artisan Coffee. Cozy Atmosphere. Local Vibes.</p>
+  </header>
+
+  <nav>
+    <a href="about.html">About</a>
+    <a href="menu.html">Menu</a>
+    <a href="events.html">Events</a>
+    <a href="contact.html">Contact</a>
+    <a href="enquiry.html">Enquiry</a>
+  </nav>
+
+  <main>
+    <section class="hero" aria-label="Hero section with café introduction and animation">
+      <div class="hero-text">
+        <h2>Welcome to Golden Bean Café</h2>
+        <p>
+          Your neighborhood spot for artisan coffee, delicious pastries, and warm community vibes. Nestled in the heart of Melville, Johannesburg, we're dedicated to crafting the perfect cup and creating a cozy atmosphere for all.
+        </p>
+        <form id="newsletter-form" aria-label="Subscribe to our newsletter">
+          <input type="email" id="newsletter-email" name="newsletter-email" placeholder="Enter your email" aria-required="true" required />
+          <button type="submit" aria-label="Subscribe to newsletter">Subscribe</button>
+          <div id="newsletter-response" role="alert" aria-live="polite"></div>
+        </form>
+      </div>
+
+      <div class="hero-image" role="img" aria-label="Animated cat peeking behind coffee mug">
+        <!-- Coffee Mug SVG -->
+        <svg class="coffee-mug-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <rect x="10" y="20" width="40" height="30" rx="10" ry="10" fill="#fff8f0" stroke="#4b2e2e" stroke-width="3" />
+          <circle cx="50" cy="35" r="12" fill="#fff8f0" stroke="#4b2e2e" stroke-width="3" />
+          <rect x="50" y="25" width="8" height="20" rx="10" ry="10" fill="#fff8f0" stroke="#4b2e2e" stroke-width="3" />
+          <ellipse cx="30" cy="30" rx="15" ry="5" fill="#d6bfa8" />
+        </svg>
+
+        <!-- Cat SVG -->
+        <svg class="cat-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <circle cx="32" cy="32" r="15" fill="#4b2e2e" />
+          <polygon points="20,15 25,5 30,15" fill="#4b2e2e" />
+          <polygon points="44,15 39,5 34,15" fill="#4b2e2e" />
+          <circle cx="27" cy="32" r="4" fill="#fff" />
+          <circle cx="37" cy="32" r="4" fill="#fff" />
+          <circle cx="27" cy="32" r="2" fill="#4b2e2e" />
+          <circle cx="37" cy="32" r="2" fill="#4b2e2e" />
+        </svg>
+      </div>
+    </section>
+
+    <section class="info-section" aria-label="About the Golden Bean Café">
+      <h3>About Us</h3>
+      <p>Golden Bean Café is proud to serve the community with carefully sourced beans, artisan brewing techniques, and a warm atmosphere. Whether you’re after your morning fix or a relaxing spot to unwind, we’ve got you covered.</p>
+      <p><strong>Hours:</strong> Mon–Sun: 7 AM – 9 PM</p>
+      <address>📍 42 7th Street, Melville, Johannesburg<br>📞 0682128287<br>📧 hello@goldenbeancafe.co.za</address>
+    </section>
+
+    <section id="coffee-game" aria-label="Coffee Bean Catch Game">
+      <h3>Catch the Coffee Beans!</h3>
+      <p>Click the falling coffee beans to score points — try not to miss any!</p>
+      <div id="game-area" aria-live="polite" aria-atomic="true"></div>
+      <div id="scoreboard" aria-live="polite" aria-atomic="true">Score: 0</div>
+      <button id="start-game" aria-label="Start Coffee Bean Catch Game">Start Game</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Golden Bean Café | Designed by Gudani Nevhufumba</p>
+  </footer>
+
+  <script>
+    // Newsletter subscription form validation & feedback
+    const newsletterForm = document.getElementById('newsletter-form');
+    const newsletterEmail = document.getElementById('newsletter-email');
+    const newsletterResponse = document.getElementById('newsletter-response');
+
+    newsletterForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const emailValue = newsletterEmail.value.trim();
+      if (!emailValue || !emailValue.includes('@')) {
+        newsletterResponse.style.color = 'red';
+        newsletterResponse.textContent = 'Please enter a valid email.';
+        return;
+      }
+      newsletterResponse.style.color = 'green';
+      newsletterResponse.textContent = `Thanks for subscribing, ${emailValue}!`;
+      newsletterForm.reset();
+    });
+
+    // Coffee Bean Catch Game
+    const gameArea = document.getElementById('game-area');
+    const scoreboard = document.getElementById('scoreboard');
+    const startGameBtn = document.getElementById('start-game');
+    let score = 0;
+    let gameInterval;
+    let beanId = 0;
+
+    // Bean image url (you can swap this)
+    const beanImage = 'https://i.imgur.com/FNwtzow.png'; 
+
+    function createBean() {
+      const bean = document.createElement('div');
+      bean.classList.add('bean');
+      bean.style.backgroundImage = `url(${beanImage})`;
+      bean.style.left = Math.random() * (gameArea.clientWidth - 30) + 'px';
+      bean.style.top = '-30px';
+      bean.setAttribute('tabindex', '0');
+      bean.setAttribute('role', 'button');
+      bean.setAttribute('aria-label', 'Coffee bean, click to catch');
+
+      // Animate falling
+      bean.style.animation = `fall 4s linear forwards`;
+
+      // On click or keypress, catch bean
+      function catchBean() {
+        score++;
+        scoreboard.textContent = `Score: ${score}`;
+        bean.remove();
+      }
+      bean.addEventListener('click', catchBean);
+      bean.addEventListener('keypress', e => {
+        if (e.key === 'Enter' || e.key === ' ') catchBean();
+      });
+
+      // Remove bean after animation ends (missed)
+      bean.addEventListener('animationend', () => {
+        bean.remove();
+      });
+
+      gameArea.appendChild(bean);
+    }
+
+    function startGame() {
+      score = 0;
+      scoreboard.textContent = 'Score: 0';
+      gameArea.innerHTML = '';
+      startGameBtn.disabled = true;
+
+      gameInterval = setInterval(() => {
+        createBean();
+      }, 1000);
+
+      // Stop game after 30 seconds
+      setTimeout(() => {
+        clearInterval(gameInterval);
+        startGameBtn.disabled = false;
+        alert(`Game over! Your final score: ${score}`);
+      }, 30000);
+    }
+
+    startGameBtn.addEventListener('click', startGame);
+  </script>
+</body>
+</html>

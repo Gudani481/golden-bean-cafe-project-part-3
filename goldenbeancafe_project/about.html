@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us - Golden Bean Café</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      color: #5a443d;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: #4b2e2e;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .about-text {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      text-align: justify;
+    }
+    .image-row {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .image-row img {
+      width: 280px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(75, 46, 46, 0.3);
+      object-fit: cover;
+      height: 180px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .image-row img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 14px rgba(75, 46, 46, 0.5);
+    }
+    footer {
+      background-color: #4b2e2e;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      font-family: 'Open Sans', sans-serif;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Golden Bean Café</h1>
+    <p>Artisan Coffee. Cozy Atmosphere. Local Vibes.</p>
+  </header>
+
+  <nav aria-label="Primary Navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" aria-current="page">About</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="enquiry.html">Enquiry</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h2>About Us</h2>
+    <p class="about-text">
+      Founded in 2018, Golden Bean Café began as a small neighborhood coffee shop with a mission: to bring the finest artisan coffee and homemade treats to the Melville community. We carefully source our beans from sustainable farms and roast them in-house to ensure freshness in every cup.
+    </p>
+    <p class="about-text">
+      Our team is passionate about crafting coffee experiences that go beyond the ordinary — whether it's a classic Flat White or a seasonal special, every drink is made with love and expertise. We also take pride in our locally baked pastries, made fresh daily by our talented bakers.
+    </p>
+    <p class="about-text">
+      More than just a café, we strive to be a community hub. From hosting live music and art shows to coffee tasting workshops, Golden Bean Café is a place where locals gather, connect, and celebrate the simple joys of life.
+    </p>
+
+    <div class="image-row" aria-label="Images of Golden Bean Café">
+      <!-- Image 1: barista-preparing-coffee.jpg -->
+      <img src="images/barista-preparing-coffee.jpg" alt="Barista preparing artisan coffee" />
+      
+      <!-- Image 2: cozy-cafe-seating.jpg -->
+      <img src="images/cozy-cafe-seating.jpg" alt="Cozy café seating area with warm lighting" />
+      
+      <!-- Image 3: fresh-pastries-baked-goods.jpg -->
+      <img src="images/fresh-pastries-baked-goods.jpg" alt="Assortment of fresh pastries and baked goods" />
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Golden Bean Café | Designed by Gudani Nevhufumba</p>
+  </footer>
+</body>
+</html>
